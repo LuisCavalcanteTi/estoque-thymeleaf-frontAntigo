@@ -1,0 +1,53 @@
+
+body{
+    margin-top: 10%;
+    text-align: center;
+    font-size: 40px;
+    color: red;
+   
+   background-color:white; 
+    
+
+    
+}
+button{
+    margin-top: 1%;
+    width: 30%;
+    font-size: 5%;
+
+}
+
+form{
+   
+       
+
+   background-color:#f2eceb;
+  
+     
+}
+img{
+ 
+    margin-top: -10%;
+     
+}
+
+.meio{
+
+ margin-bottom: 4%;
+ color: #a5282c;
+ width: 50%;
+ margin-left: 25%;
+
+}
+.botaoCor{
+    background-color: #a5282c;
+    padding-left:  10%;
+    padding-right:  10%;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.botaoCor:hover{
+    background-color: green;
+}

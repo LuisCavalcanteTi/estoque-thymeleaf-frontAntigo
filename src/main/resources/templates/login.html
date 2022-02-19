@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+<title>Login</title>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<meta name=description content="">
+<meta name=keywords content="">
+<meta name=author content='Luis Cavalcante'>
+
+
+
+
+
+<link  rel="stylesheet" th:href="@{/css/login.css}"	 />
+
+<link  rel="stylesheet"  th:href="@{/cssExternos/w3/w3.css}" />
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+	<div id="controle" class="w3-container">
+
+		<img src="img/Logo_1.png" width="500" height="220"
+			alt="imagem da logo Artesanart">
+
+
+
+		<form th:action="@{/login}" Method="post" class="w3-container w3-card-4" >
+
+
+			<p>
+				<label class="w3-text-red"><b>Login:</b></label>
+				 <input	class="w3-input w3-border" name="username" type="text" placeholder="Login">
+			</p>
+			<p>
+				<label class="w3-text-red"><b>Senha:</b></label> 
+				<input class="w3-input w3-border" name="password" type="password" placeholder="Senha">
+			</p>
+	<p>
+			<button  type="submit" class="w3-btn w3-red w3-hover-blue w3-round-tiny" style= "width: 100%"> Confirmar  </button>
+			</p>
+	
+		</form>
+		
+
+
+	</div>
+</body>
+</html>

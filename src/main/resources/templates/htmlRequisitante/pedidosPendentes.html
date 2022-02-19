@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+<title>Pedidos Pendentes</title>
+<meta charset=UTF-8>
+
+<meta name=description content="">
+<meta name=keywords content="">
+<meta name=author content='Luis'>
+
+
+ <link th:href="@{/css/tables.css}"	rel="stylesheet" />
+<link th:href="@{/css/menu.css}" rel="stylesheet" />
+<link th:href="@{/cssExternos/w3/w3.css}" rel="stylesheet" />
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+</head>
+<body>
+			<nav  class="w3-bar w3-border w3-red w3-xlarge w3-margin-bottom "
+		id="menu">
+
+		<header class=" w3-center w3-border w3-red">
+	<h1>
+				<b  >Estoque Artesanart : Pedidos Pendentes</b>
+		
+</h1>
+
+			<p>
+				 Bem vindo: <span >Luis</span> 
+			</p>
+<p class="w3-right-align "> <a  class="w3-button w3-yellow w3-round-large" href="/sair">Sair</a></p>
+			
+		</header>
+		<a href="http://localhost:8080/usuario/requisitarPedido/formulario"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile ">Requisição
+			de Materiais</a> <a href="http://localhost:8080/usuario/pedidosPendentes"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile">Pedidos
+			Pendentes</a> <a href="http://localhost:8080/usuario/pedidosFinalizados"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile">Pedidos
+			Finalizados</a>
+	</nav>
+	
+<h2 class="w3-cursive w3-text-blue">Pedidos Pendentes</h2>
+
+	<article class="w3-container">
+
+		
+
+
+		<div class="w3-responsive">
+
+			<table class="w3-table-all w3-hoverable ">
+
+
+
+				<tr class="w3-blue">
+					<th>Número do Pedido</th>
+					<th>Código Produto</th>
+					<th>Descrição</th>
+					<th>Hora Requição</th>
+					<th>Status</th>
+					<th>Data Hora Impresso</th>
+				</tr>
+				<tr th:each="pedido : ${pedidos}" class="w3-hover-green ">
+
+					<td th:text="${pedido.id}"></td>
+					<td th:text="${pedido.codigoProduto}"></td>
+					<td th:text="${pedido.descricao}"></td>
+					<td th:text="${pedido.horaRequisicao}"></td>
+					<td >PENDENTE</td>
+					<td th:text="${pedido.horaImpresso}"></td>
+					
+				</tr>
+				
+
+
+			</table>
+
+		</div>
+
+
+
+
+
+
+
+
+	</article>
+
+
+
+
+
+</body>
+</html>
+
+

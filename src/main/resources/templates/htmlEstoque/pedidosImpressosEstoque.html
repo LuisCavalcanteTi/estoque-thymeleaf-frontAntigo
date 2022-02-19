@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+<title>Estoque</title>
+<meta charset=UTF-8>
+
+<meta name=description content="">
+<meta name=keywords content="">
+<meta name=author content='Luis'>
+
+
+
+
+
+
+<link th:href="@{/css/requisitanteRequisicaoPedidos.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/menu.css}" rel="stylesheet" />
+<link th:href="@{/cssExternos/w3/w3.css}" rel="stylesheet" />
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+
+
+</head>
+<body>
+	<nav  class="w3-bar w3-border w3-red w3-xlarge w3-margin-bottom "
+		id="menu">
+
+		<header class=" w3-center  w3-border w3-red">
+		
+	
+			<h1>
+				<b>Estoque Artesanart : Pedidos Impressos</b>
+			</h1>
+
+
+			<p>
+				Seja Bem vindo: <span >Luis</span> 
+			</p>
+			<p class="w3-right-align "><a  class="w3-button w3-yellow w3-round-large" href="/sair">Sair</a>	</p>
+			
+		</header>
+		<a href="http://localhost:8080/estoque/pedidosEstoque/Pendentes"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile ">Pedidos
+			Pendentes</a> <a href="http://localhost:8080/estoque/pedidosImpressos/mostrar"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile">Pedidos
+			Impressos</a> <a href="http://localhost:8080/estoque/pedidosFinalizadosEstoque"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile">Pedidos
+			Finalizados</a>
+	</nav>
+
+
+
+
+
+
+
+<div id="topo" >
+
+</div>
+	<br>
+	<article>
+		<form th:each="pedido : ${pedidos}" class="w3-container w3-card-4"
+			action="/estoque/cadastro" method="POST">
+
+
+
+
+			<div class="w3-half w3-left-align  ">
+				<h3>Número do Pedido:</h3>
+				<p th:text="${pedido.id}"></p>
+				<input th:value="${pedido.id}" class=" w3-hide" name="id"
+					type="text">
+
+
+			</div>
+
+			<div class="w3-half  w3-left-align  ">
+				<h3>Hora Requisição:</h3>
+				<p th:text="${pedido.horaRequisicao}"></p>
+				<input th:value="${pedido.horaRequisicao}" class=" w3-hide"
+					name="horaRequisicao" type="text">
+			</div>
+
+
+			<div class="w3-half  w3-left-align  ">
+				<h3>Nome do Requisitante:</h3>
+				<p th:text="${pedido.nomeDoRequisitante}"></p>
+				<input th:value="${pedido.nomeDoRequisitante}" class=" w3-hide"
+					name="nomeDoRequisitante" type="text">
+			</div>
+
+			<div class="w3-half  w3-left-align   ">
+				<h3>Setor:</h3>
+				<p th:text="${pedido.setorDoRequisitante}"></p>
+				<input th:value="${pedido.setorDoRequisitante}" class=" w3-hide"
+					name="setorDoRequisitante" type="text">
+			</div>
+
+
+			<div class="w3-half   w3-left-align  ">
+				<h3>Código do Produto:</h3>
+				<p th:text="${pedido.codigoProduto}"></p>
+				<input th:value="${pedido.codigoProduto}" class=" w3-hide"
+					name="codigoProduto" type="text">
+			</div>
+
+			<div class="w3-half  w3-left-align">
+				<h3>Descrição do Produto:</h3>
+				<p th:text="${pedido.descricao}"></p>
+
+				<input th:value="${pedido.descricao}" class="w3-hide"
+					name="descricao" type="text">
+			</div>
+
+
+			<div class="w3-half  w3-left-align   ">
+				<h3>Endereço:</h3>
+				<p>??.??.??.??</p>
+			</div>
+
+
+			<div class="w3-half   w3-left-align  ">
+				<h3>Data/Hora Impresso:</h3>
+				<p th:text="${pedido.horaImpresso}"></p>
+				<input th:value="${pedido.horaImpresso}" class="w3-hide"
+					name="horaImpresso" type="text">
+			</div>
+
+
+
+
+			<h3>Quantidade Solicitada:</h3>
+			<p th:text="${pedido.quantidade}"></p>
+			<input th:value="${pedido.quantidade}" class="w3-hide"
+				name="quantidade" type="text">
+
+
+
+			<div class="w3-half w3-left-align   ">
+				<h3>Status:</h3>
+				<p>
+					<select class="w3-red" name="Impresso" id="Impresso">
+						<option value="impresso">IMPRESSO</option>
+						<option value="Finalizado">FINALIZADO</option>
+					</select>
+				</p>
+			</div>
+
+			<div class="w3-half w3-left-align   ">
+				<h3>Quantidade Atendida:</h3>
+				<p>
+					<input class="w3-input w3-border" name="quantidadeEntregue"
+						type="text">
+				</p>
+			
+			</div>
+
+
+			<div class="w3-half w3-left-align   ">
+				<h3>Confirme a alteração</h3>
+				<button type="submit"
+					class="w3-btn w3-red w3-hover-green w3-round-tiny"
+					style="width: 100%">Confirmar</button>
+
+			</div>
+
+			<p>
+		</form>
+
+
+	</article>
+
+
+</body>
+</html>
+
+

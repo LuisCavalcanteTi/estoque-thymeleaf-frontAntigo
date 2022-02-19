@@ -1,0 +1,28 @@
+
+
+form{
+	width: 80%;
+	
+	display:center;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top:5%;
+    margin-bottom: 5%;
+}
+form input, select{
+	
+	margin-top:2%;
+	
+}
+
+h2{
+	margin-top:8%;
+	text-align: center;
+	font-size:45px;
+	margin-bottom:8%;
+}
+
+table td{
+	
+	border:1px solid black;
+}

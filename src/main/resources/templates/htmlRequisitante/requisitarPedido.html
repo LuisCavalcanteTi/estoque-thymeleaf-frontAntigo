@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+<title>Requisição de Material</title>
+<meta charset=UTF-8>
+
+<meta name=description content="">
+<meta name=keywords content="">
+<meta name=author content='Luis'>
+
+
+
+<link th:href="@{/css/requisitanteRequisicaoPedidos.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/menu.css}" rel="stylesheet" />
+<link th:href="@{/cssExternos/w3/w3.css}" rel="stylesheet" />
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+</head>
+<body onload="onLoad()">
+	<nav class="w3-bar w3-border w3-red w3-xlarge w3-margin-bottom "
+		id="menu">
+
+		<header class=" w3-center w3-border w3-red">
+			<h1>
+				<b>Estoque Artesanart : Requisitar Material</b>
+
+			</h1>
+
+
+			<p>
+
+
+				Bem-vindo: <span>Luis</span>
+			</p>
+			<p class="w3-right-align">
+			<p class="w3-right-align ">
+				<a class="w3-button w3-white w3-hover-dark-gray w3-round-large" href="/sair">Sair</a>
+			</p>
+
+
+
+
+
+		</header>
+
+
+		<a href="http://localhost:8080/usuario/requisitarPedido/formulario"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile ">Requisição
+			de Materiais</a> <a href="http://localhost:8080/usuario/pedidosPendentes"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile">Pedidos
+			Pendentes</a> <a href="http://localhost:8080/usuario/pedidosFinalizados"
+			style="width: 33.33%" class="w3-bar-item w3-button w3-mobile">Pedidos
+			Finalizados</a>
+	</nav>
+
+
+
+	<article class="w3-container" id="verr">
+
+
+
+
+
+
+		<form th:object="${requisicaoNovoPedido}"
+			class="w3-container w3-card-4" action="cadastro" method="POST">
+
+
+		
+
+			<div>
+				<p>
+					<label class="w3-text-blue"><b>Código:</b></label><h2 v-if="selected2"> {{selected2}}</h2>
+				</p>
+				<p>
+<input    type="text" id="text"  name="codigoProduto"  >
+					<select v-model="selected" class="w3-select w3-text-black"  id="language" onChange="update()" 	>
+
+						<option v-if="selected2" disabled>Recarregar a Página para pode selecionar por essa opção </option>
+						
+						<option v-else v-for="produtos in produtos"	v-bind:value="produtos.descricao">{{produtos.codigo}} </option>
+						
+										<input v-if="selected"  type="text" id="value" name="descricao"  class="w3-hide" >
+										<input  v-if="selected"  type="text" id="text"  name="codigoProduto"  class="w3-hide">
+						
+						
+					</select>
+		
+				</p>
+					
+				<p>
+					<label class="w3-text-blue"><b>Descrição:</b> </label>	<h2 v-if="selected"> Descrição: {{selected}}</h2>
+				</p>
+				
+				
+					
+					
+					<select v-model="selected2" class="w3-select w3-text-black "	 id="language2" onChange="update2()">
+
+
+
+						<option v-if="selected" disabled >Recarregar a Página para pode selecionar por essa opção</option>
+						
+						<option v-else v-for="produtos in produtos"	 v-bind:value="produtos.codigo"> {{produtos.descricao}} </option>
+						
+					
+					
+			<input  v-if="selected2" type="text" id="value1" name="codigoProduto"  class="w3-hide" >
+		    <input  v-if="selected2"  type="text" id="text1"  name="descricao"   class="w3-hide" >
+					</select>
+				
+			</div>
+			
+			
+	
+			
+		
+			
+			
+				
+			
+		
+
+
+
+
+			<div class="w3-panel w3-yellow w3-text-red" th:errors="*{descricao}">
+				Erros do nome do produto</div>
+			<p>
+				<label for="quantidade" class="w3-text-blue"><b>Quantidade</b></label>
+				<input th:field="*{quantidade}" class="w3-input w3-border"
+					type="text">
+			</p>
+			<div class="w3-panel w3-yellow w3-text-red" th:errors="*{quantidade}">
+				Erros do nome do produto</div>
+
+			<p>
+				<label for="medida" class="w3-text-blue"><b>Unidade de
+						Medida</b></label> 
+			</p>
+						  <p>
+  <select class="w3-select" name="medida">
+  <option value="" disabled selected>Escolha a unidade de medida</option>
+  <option value="Unidade">Unidade</option>
+  <option value="Metros">Metros</option>
+  <option value="Pacote">Pacote</option>
+  <option value="Rolo">Rolo</option>
+</select>   
+</p>
+
+			<div class="w3-panel w3-yellow w3-text-red" th:errors="*{medida}">
+				Erros do nome do produto</div>
+			<p>
+
+
+ 
+
+			<p>
+				<button type="submit" class="w3-btn w3-blue">Confirmar</button>
+			</p>
+		</form>
+
+
+
+
+		
+		
+
+	
+		
+
+
+
+
+
+
+		
+
+	</article>
+
+	<script>
+	 function onLoad(){
+		 
+		 var app = new Vue({
+			  el: '#verr',
+			  data: {
+				  selected: false,
+				  selected2: false,
+			    produtos: []
+			  },
+			  
+			  mounted () {
+			    axios
+			      .get('http://localhost:8080/usuario/requisitarPedido/formulario/listar')
+			      .then(response => (this.produtos = response.data))
+			  }
+			});
+	 }
+	 
+	 
+	 
+	 
+	 
+	</script>
+	
+		<script type="text/javascript">
+			function update() {
+				var select = document.getElementById('language');
+				var option = select.options[select.selectedIndex];
+
+				document.getElementById('value').value = option.value;
+				document.getElementById('text').value = option.text;
+			}
+
+			update();
+			
+			
+		</script>
+		
+		
+				<script type="text/javascript">
+			function update2() {
+				var select = document.getElementById('language2');
+				var option = select.options[select.selectedIndex];
+
+				document.getElementById('value1').value = option.value;
+				document.getElementById('text1').value = option.text;
+			}
+
+			update2();
+		</script>
+		
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	
+	
+</body>
+</html>
+
+
